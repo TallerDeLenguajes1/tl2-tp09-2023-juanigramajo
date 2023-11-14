@@ -48,7 +48,7 @@ public class TareaController : ControllerBase
         return Ok();
     }
 
-    // FALTA LOGICA
+
     [HttpGet("CantTareasEstado")]
     public ActionResult<int> CantTareasEstado(EstadoTarea estado)
     {

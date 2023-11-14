@@ -98,7 +98,7 @@ public class TareaRepository : ITareaRepository
 
         SQLiteCommand command = connection.CreateCommand();
 
-        command.CommandText = "SELECT * FROM Tarea WHERE id_usuario_propietario = @idUsuario";
+        command.CommandText = "SELECT * FROM Tarea WHERE id_usuario_asignado = @idUsuario";
         command.Parameters.Add(new SQLiteParameter("@idUsuario", idUser));
         
 
@@ -109,7 +109,7 @@ public class TareaRepository : ITareaRepository
             {
                 var tarea = new Tarea();
                 tarea.Id = Convert.ToInt32(reader["id"]);
-                tarea.IdTablero = Convert.ToInt32(reader["idTablero"]);
+                tarea.IdTablero = Convert.ToInt32(reader["id_tablero"]);
                 tarea.Nombre = reader["nombre"].ToString();
                 tarea.Estado = (EstadoTarea)(Convert.ToInt32(reader["estado"]));
                 tarea.Descripcion = reader["descripcion"].ToString();
@@ -145,7 +145,7 @@ public class TareaRepository : ITareaRepository
             {
                 var tarea = new Tarea();
                 tarea.Id = Convert.ToInt32(reader["id"]);
-                tarea.IdTablero = Convert.ToInt32(reader["idTablero"]);
+                tarea.IdTablero = Convert.ToInt32(reader["id_tablero"]);
                 tarea.Nombre = reader["nombre"].ToString();
                 tarea.Estado = (EstadoTarea)(Convert.ToInt32(reader["estado"]));
                 tarea.Descripcion = reader["descripcion"].ToString();
@@ -170,7 +170,7 @@ public class TareaRepository : ITareaRepository
         SQLiteCommand command = connection.CreateCommand();
 
         command.CommandText = "SELECT * FROM Tarea WHERE estado = @estado";
-        command.Parameters.Add(new SQLiteParameter("@estado", estado));
+        command.Parameters.Add(new SQLiteParameter("@estado", (EstadoTarea)(estado)));
         
 
         connection.Open();
