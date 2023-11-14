@@ -2,7 +2,7 @@ using System.Data.SQLite;
 
 public class UsuarioRepository : IUsuarioRepository
 {
-    private string cadenaConexion = "Data Source=DB/movie.db;Cache=Shared";
+    private string cadenaConexion = "Data Source=DB/kandan.db;Cache=Shared";
     
     
     // Crear un nuevo usuario. (recibe un objeto Usuario).

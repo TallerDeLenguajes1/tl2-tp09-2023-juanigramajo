@@ -2,13 +2,12 @@ using System.Data.SQLite;
 
 public class TableroRepository : ITableroRepository
 {
-    private string cadenaConexion = "Data Source=DB/movie.db;Cache=Shared";
+    private string cadenaConexion = "Data Source=DB/kandan.db;Cache=Shared";
 
     
     // Crear un nuevo tablero. (devuelve un objeto Tablero).
-    public Tablero Create()
+    public Tablero Create(Tablero tab)
     {
-        var tab = new Tablero();
         var query = $"INSERT INTO Tablero VALUES (@id, @idUserProp, @nombre, @desc)";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
