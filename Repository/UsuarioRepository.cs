@@ -8,13 +8,12 @@ public class UsuarioRepository : IUsuarioRepository
     // Crear un nuevo usuario. (recibe un objeto Usuario).
     public void Create(Usuario usuario)
     {   
-        var query = $"INSERT INTO Usuario VALUES (@id, @nombreDeUsuario)";
+        var query = $"INSERT INTO Usuario (nombre_de_usuario) VALUES (@nombreDeUsuario)";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
             var command = new SQLiteCommand(query, connection);
 
-            command.Parameters.Add(new SQLiteParameter("@id", usuario.Id));
             command.Parameters.Add(new SQLiteParameter("@nombreDeUsuario", usuario.NombreDeUsuario));
 
             command.ExecuteNonQuery();
@@ -27,13 +26,12 @@ public class UsuarioRepository : IUsuarioRepository
     // Modificar un usuario existente. (recibe un Id y un objeto Usuario).
     public void Update(int ID, Usuario usuario)
     {
-        var query = $"UPDATE Usuario SET id = @id, nombre_de_usuario = @nombreDeUsuario WHERE id = @idcambiar;";
+        var query = $"UPDATE Usuario SET nombre_de_usuario = @nombreDeUsuario WHERE id = @idcambiar;";
         using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
         {
             connection.Open();
             var command = new SQLiteCommand(query, connection);
 
-            command.Parameters.Add(new SQLiteParameter("@id", usuario.Id));
             command.Parameters.Add(new SQLiteParameter("@nombreDeUsuario", usuario.NombreDeUsuario));
             command.Parameters.Add(new SQLiteParameter("@idcambiar", ID));
 

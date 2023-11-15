@@ -1,10 +1,10 @@
 public enum EstadoTarea
 {
-    Ideas,
-    ToDo, 
-    Doing, 
-    Review, 
-    Done
+    Ideas = 0,
+    ToDo = 1, 
+    Doing = 2, 
+    Review = 3, 
+    Done = 4
 }
 
 public class Tarea
